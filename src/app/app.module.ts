@@ -12,13 +12,21 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { CourseListComponent } from './components/course/course-list/course-list.component';
 import { CourseCreateComponent } from './components/course/course-create/course-create.component';
 import { CourseEditComponent } from './components/course/course-edit/course-edit.component';
+import { UserListComponent } from './components/user/user-list/user-list.component';
+import { UserCreateComponent } from './components/user/user-create/user-create.component';
+import { UserEditComponent } from './components/user/user-edit/user-edit.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AdminGuardService } from './services/admin-guard.service';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'log-in', component: LogInComponent },
   { path: 'courses', component: CourseListComponent },
-  { path: 'course/create', component: CourseCreateComponent },
-  { path: 'course/:courseId', component: CourseEditComponent }
+  { path: 'course/create', component: CourseCreateComponent, canActivate: [AuthGuardService] },
+  { path: 'course/:courseId', component: CourseEditComponent, canActivate: [AdminGuardService]  },
+  { path: 'users', component: UserListComponent, canActivate: [AdminGuardService]  },
+  { path: 'user/create', component: UserCreateComponent, canActivate: [AdminGuardService]  },
+  { path: 'user/:userId', component: UserEditComponent, canActivate: [AdminGuardService]  }
 ];
 
 @NgModule({
@@ -28,7 +36,10 @@ const routes: Routes = [
     LogInComponent,
     CourseListComponent,
     CourseCreateComponent,
-    CourseEditComponent
+    CourseEditComponent,
+    UserListComponent,
+    UserCreateComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

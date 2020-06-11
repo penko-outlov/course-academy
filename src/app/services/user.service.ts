@@ -19,7 +19,7 @@ export class UserService {
     return this.httpClient.get<UserModel[]>(`${baseUrl}/users`).toPromise();
   }
 
-  getById(userId: string): Promise<UserModel> {
+  getById(userId: number): Promise<UserModel> {
     return this.httpClient.get<UserModel>(`${baseUrl}/users/${userId}`).toPromise();
   }
 
@@ -27,7 +27,17 @@ export class UserService {
     return this.httpClient.put<void>(`${baseUrl}/users/${user.id}`, user).toPromise();
   }
 
+  removeById(userId: number): Promise<void> {
+    return this.httpClient.delete<void>(`${baseUrl}/users/${userId}`).toPromise();
+  }
+
   getByEmail(email: string): Promise<UserModel> {
     return this.httpClient.get<UserModel>(`${baseUrl}/users?email=${email}`).toPromise();
+  }
+
+  async blockUserById(userId: number): Promise<void> {
+    const user: UserModel = await this.getById(userId);
+    user.isActive = false;
+    return this.update(user);
   }
 }

@@ -22,7 +22,7 @@ export class CourseListComponent implements OnInit {
 
   async addToFavorites(courseId: number) {
     const cachedUser = JSON.parse(localStorage.getItem('user'));
-    const user: UserModel = await this.userService.getById(cachedUser.userId);
+    const user: UserModel = await this.userService.getById(parseInt(cachedUser.userId));
     if (!user.favoriteCourses) {
       user.favoriteCourses = [];
     }

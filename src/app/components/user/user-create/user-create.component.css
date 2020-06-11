@@ -1,0 +1,7 @@
+#user-create-form {
+  width: 50%;
+}
+
+#user-create-form .mat-form-field {
+  width: 100%;
+}
