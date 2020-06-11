@@ -1,0 +1,26 @@
+<h2>Create Course</h2>
+
+<div id="course-create-form">
+  <form [formGroup]="createCourseForm">
+    <mat-grid-list cols="1" rowHeight="110px">
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input matInput type="text" formControlName="title" />
+          <mat-error>Title is required</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="title" formControlName="description"></textarea>
+          <mat-error>Description is required</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+
+  <button type="button" mat-raised-button color="primary" [disabled]="createCourseForm.invalid" (click)="createCourse()">Save</button>
+  <a mat-raised-button routerLink="/courses" color="warn">Back</a>
+</div>
