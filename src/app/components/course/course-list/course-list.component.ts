@@ -36,6 +36,14 @@ export class CourseListComponent implements OnInit {
     await this.removeCourseFromUserFavorites(courseId);
   }
 
+  userIsAdmin(): boolean {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+      return false;
+    }
+    return user.isAdmin;
+  }
+
   private async fetchCourses() {
     this.courses = await this.courseService.getAll();
   }

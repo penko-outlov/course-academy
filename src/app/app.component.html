@@ -1,5 +1,15 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <span>Course Academy</span>
+  <div *ngIf="!userIsPresent()">
+    <a mat-flat-button routerLink="log-in" color="primary">Log In</a>
+    <a mat-flat-button routerLink="register" color="primary">Register</a>
+  </div>
+  <div *ngIf="userIsPresent()">
+    <a mat-flat-button routerLink="courses" color="primary">Courses</a>
+    <a mat-flat-button routerLink="favorites" color="primary">Favorite Courses</a>
+    <a mat-flat-button routerLink="users" color="primary" *ngIf="userIsAdmin()">Users</a>
+    <a mat-flat-button color="primary" routerLink="courses" (click)="logOut()">Log Out</a>
+  </div>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

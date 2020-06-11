@@ -17,16 +17,18 @@ import { UserCreateComponent } from './components/user/user-create/user-create.c
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminGuardService } from './services/admin-guard.service';
+import { FavoritesComponent } from './components/user/favorites/favorites.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'log-in', component: LogInComponent },
   { path: 'courses', component: CourseListComponent },
-  { path: 'course/create', component: CourseCreateComponent, canActivate: [AuthGuardService] },
-  { path: 'course/:courseId', component: CourseEditComponent, canActivate: [AdminGuardService]  },
+  { path: 'course/create', component: CourseCreateComponent, canActivate: [AdminGuardService] },
+  { path: 'course/:courseId', component: CourseEditComponent, canActivate: [AdminGuardService] },
   { path: 'users', component: UserListComponent, canActivate: [AdminGuardService]  },
-  { path: 'user/create', component: UserCreateComponent, canActivate: [AdminGuardService]  },
-  { path: 'user/:userId', component: UserEditComponent, canActivate: [AdminGuardService]  }
+  { path: 'user/create', component: UserCreateComponent, canActivate: [AdminGuardService] },
+  { path: 'user/:userId', component: UserEditComponent, canActivate: [AdminGuardService] },
+  { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({
@@ -39,7 +41,8 @@ const routes: Routes = [
     CourseEditComponent,
     UserListComponent,
     UserCreateComponent,
-    UserEditComponent
+    UserEditComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

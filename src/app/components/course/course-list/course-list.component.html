@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="userIsAdmin()">
   <a routerLink="/course/create" mat-icon-button color="primary">
     <mat-icon>add_box</mat-icon>
   </a>
@@ -18,7 +18,7 @@
       <mat-icon>favorite_border</mat-icon>
     </button>
     <button mat-button>Rate</button>
-    <span>
+    <span *ngIf="userIsAdmin()">
       <a [routerLink]="['/course', course.id]" mat-button>
         <mat-icon>edit</mat-icon>
       </a>
