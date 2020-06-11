@@ -1,0 +1,25 @@
+<h2>Log In</h2>
+
+<div id="log-in-form">
+  <form [formGroup]="logInForm">
+    <mat-grid-list cols="1" rowHeight="85px">
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" formControlName="email">
+          <mat-error *ngIf="email.touched && email.hasError('required')">Enter an email</mat-error>
+          <mat-error *ngIf="email.touched && !email.hasError('required')">Enter a valid email</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+          <mat-error *ngIf="password.touched">Enter a password</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <button type="button" color="primary" mat-raised-button [disabled]="logInForm.invalid" (click)="logIn()">Log In</button>
+  </form>
+</div>

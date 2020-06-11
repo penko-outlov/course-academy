@@ -8,15 +8,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './modules/material/material.module';
 import { RegisterComponent } from './components/register/register.component';
+import { LogInComponent } from './components/log-in/log-in.component';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'log-in', component: LogInComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
